@@ -3,7 +3,7 @@
 # ----------------------- #
 
 url: http://TonnyXu.github.com
-title: Tonny Xu
+title: Loving Cocoa | Tonny Xu
 subtitle: Life is like a box of chocolates...
 author: Tonny Xu
 simple_search: http://google.com/search
@@ -19,7 +19,7 @@ date_format: "ordinal"
 subscribe_rss: /atom.xml
 subscribe_email:
 # RSS feeds can list your email address if you like
-email:
+email: 
 
 # ----------------------- #
 #    Jekyll & Plugins     #
