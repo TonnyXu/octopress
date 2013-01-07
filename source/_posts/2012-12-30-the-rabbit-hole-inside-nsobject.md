@@ -4,6 +4,7 @@ title: The rabbit hole inside NSObject
 date: 2012-12-30 14:45
 comments: true
 categories: [Objective-C, Cocoa, Foundation.framework, NSObject]
+published: false
 ---
 
 `NSObject` and `NSProxy` is the only two root classes in Cocoa. You can create your own root class, but that is a tough task and it's not a kind of work that most of us can do. Although `NSObject` is used everywhere, but it's not understood by most of us. Understanding `NSObject` and Objective-C Runtime system could help us a lot.

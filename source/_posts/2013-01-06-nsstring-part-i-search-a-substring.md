@@ -1,9 +1,10 @@
 ---
 layout: post
-title: NSString - Part I: Search/Find a substring
+title: "NSString - Part I: Finding a substring"
 date: 2013-01-06 18:18
 comments: true
 categories: [Objective-C, Cocoa, Foundation.framework, NSString, search, algorithm]
+published: false
 ---
 
 ## The most common task for string object: find a substring
@@ -26,7 +27,7 @@ Basically, the first 3 methods are different variants for finding a character, a
 
 Since `NSString` is `toll-free bridged` with `CFStringRef`, and `CoreFoundation` is an open source framework that you can always check the source at [http://opensource.apple.com](http://opensource.apple.com/source/CF/CF-744.12/). Current available version is **OS X 10.8.2**, and the CF(=CoreFoundation) has a version number: **744.12**. This means we can find corresponding C methods in [CFString.h](http://opensource.apple.com/source/CF/CF-744.12/CFString.h):
 
-```c
+``` c functions defined in CFString.h
 CF_EXPORT
 CFComparisonResult CFStringCompareWithOptionsAndLocale(CFStringRef theString1, CFStringRef theString2, CFRange rangeToCompare, CFStringCompareFlags compareOptions, CFLocaleRef locale) CF_AVAILABLE(10_5, 2_0);
 
@@ -72,10 +73,8 @@ Basically, for string operations, the
 7. [CFData.h](http://opensource.apple.com/source/CF/CF-744.12/CFData.h)
 8. [CFData.c](http://opensource.apple.com/source/CF/CF-744.12/CFData.c)
 10. [KMP algorithm from Matrix67.com](http://www.matrix67.com/blog/archives/115)
-11. [KMP algorithm from en.wiki](http://en.wikipedia.org/wiki/Knuth–Morris–Pratt_algorithm)
+11. [KMP algorithm from en.wiki](http://en.wikipedia.org/wiki/Knuth-Morris-Pratt_algorithm)
 12. [Extra String matching algorithms](http://www-igm.univ-mlv.fr/%7Elecroq/string/node1.html)
-13. [Boyer-Moore Algorithm from en.wiki](http://en.wikipedia.org/wiki/Boyer–Moore_string_search_algorithm)
+13. [Boyer-Moore Algorithm from en.wiki](http://en.wikipedia.org/wiki/Boyer-Moore_string_search_algorithm)
 14. [From KMP to BM algorithm](http://blog.csdn.net/v_JULY_v/article/details/6545192)
 15. [Design and Analysis of Algorithms: KMP](http://www.ics.uci.edu/~eppstein/161/960227.html)
-
-What?
