@@ -135,7 +135,7 @@ The reason I post other context is because the comment before `HashEverythingLim
 
 You can see the code in the [gist](#gist) below.
 
-This explains what the `if` clause is doing in [List 1](#list1). The function described in [List 2](#list2)'s comment is called [TBD](). For details please see [CLRS, page xxx].
+This explains what the `if` clause is doing in [List 1](#list1). 
 
 #### This inline function does the real work
 
@@ -174,9 +174,32 @@ CF_INLINE CFHashCode __CFStrHashCharacters(const UniChar *uContents, CFIndex len
 }
 ```
 
-Actually, this function is implemented right below the [List 2](#list2). 
+Let's take a close look at this method, the whole thing before `return` is to calculate a fairly large number `result`, than add another large value by left shifting `result`.
 
-Based on the length of the string buff to be hashed, it calculate the hash value every 4 characters, then add the modulo value and return. 
+```c
+return result + (result << (actualLen & 31));
+```
+
+Note there are some programming technicals used here, especially an unusual usage of macro:
+
+With the definition of `HashNextUniChar` as 
+
+```c
+#define HashNextUniChar(accessStart, accessEnd, pointer) \
+    {result = result * 257 + (accessStart 0 accessEnd); pointer++;}
+```
+
+The code below:
+
+```c
+HashNextUniChar(uContents[, ], uContents);
+```
+
+will be expanded to:
+
+```c
+{result = result * 257 + uContents[0]; uContents++;}
+```
 
 **That's it**.
 
@@ -192,6 +215,7 @@ I wrote a simple function to see the differences of 2 functions: `-[NSString has
 {% gist 4749305 %}
 
 {% gist 4749305 [output.txt] %}
+
 If see the output, did you remember I mentioned to differences between 32bit system and 64bit system [before](#note64)?
 
 The hash value returned by `CFStringHashNSString` is actually a 32bit unsigned integer, while `-[NSString hash]` does return a 64bit unsigned integer in 64bit system. If we look at [List 2](#list2) again, we will see that Apple's engineer noted that they haven't implemented `LP64` yet.
